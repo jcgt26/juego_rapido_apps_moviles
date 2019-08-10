@@ -1,0 +1,35 @@
+body{
+    text-align: center;
+
+}
+h1{
+    font-family: 'Sofia'; font-size: 40px;
+}
+#board{
+    /* border: 3px solid black; */
+    display: inline-block;
+}
+
+.column{
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    background-color: blue;
+    border-right: 3px solid #eee;
+    padding: 2px;
+}
+
+
+
+ .column.hidden{
+     background-color: #148F77 ;
+     cursor: pointer;
+ }
+ .column.hidden.mine{
+    background-color: red;
+}
+
+ .column.hidden:hover{
+     background-color: #CA6F1E  ; 
+ }
+
