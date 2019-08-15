@@ -80,7 +80,7 @@ h1{
 }
 
  .column.hidden:hover{
-     background-color: #CA6F1E  ; 
+     /* background-color: #CA6F1E  ;  */
  }
 
  .column.mine.mine_icon{
@@ -111,4 +111,10 @@ h1{
 
 .ocultar{
     display: none;
+}
+.column.hidden.flag{
+    background: url("../img/flag.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
 }

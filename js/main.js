@@ -41,19 +41,19 @@ function loadBoard(rows, columns) {
 }
 
 ///////////////////////////////////////////////////////////////////////////
-// $('.column').each(function(){
-//     var $this = $(this);
-//     var mc = new Hammer(this);
-//     mc.on("press", function() {
-//         console.log('Double tap!');
-//         alert('Double tap!');
-//         $this.toggleClass('liked');
-//         return false;
-//     });
-// });
+
 //////////////////////////////////////////////////////////////////////////////////
 loadBoard(TOTALROWS, TOTALCOLS);
 
+$('.column.hidden').each(function () {
+    var $this = $(this);
+    var mc = new Hammer(this);
+    mc.on("press", function () {
+
+        $this.toggleClass('flag');
+        return false;
+    });
+});
 
 function restart() {
     loadBoard(TOTALROWS, TOTALCOLS);
@@ -88,12 +88,12 @@ function reveal(row, column) {
             $cell.addClass('number_1');
             // $cell.text(mineNumb);
             // return;
-        }else if(mineNumb === 2){
+        } else if (mineNumb === 2) {
             $cell.addClass('number_2');
-        }else if(mineNumb === 3){
+        } else if (mineNumb === 3) {
             $cell.addClass('number_3');
         }
-        else{
+        else {
             return
         }
         for (let di = -1; di <= 1; di++) {
@@ -111,20 +111,39 @@ function reveal(row, column) {
 }
 
 
-$board.on('click', '.column.hidden', function () {
+// $board.on('click', '.column.hidden', function () {
+//     const $cell = $(this);
+//     const row = $cell.data('row');
+//     const column = $cell.data('column');
+//     console.log(this);
+
+//     if ($cell.hasClass('mine')) {
+//         gameOver(true);
+//     } else {
+//         reveal(row, column);
+//         let isGameOver = $('.column.hidden').length === $('.column.mine').length ? false : true;
+//         if (isGameOver === false) {
+//             gameOver(false)
+//         }
+//     }
+
+// });
+$('.column.hidden').each(function () {
     const $cell = $(this);
     const row = $cell.data('row');
     const column = $cell.data('column');
-    console.log(this);
-
-    if ($cell.hasClass('mine')) {
-        gameOver(true);
-    } else {
-        reveal(row, column);
-        let isGameOver = $('.column.hidden').length === $('.column.mine').length ? false : true;
-        if (isGameOver === false) {
-            gameOver(false)
+    var $this = $(this);
+    var mc = new Hammer(this);
+    mc.on("tap", function () {
+        if ($cell.hasClass('mine')) {
+            gameOver(true);
+        } else {
+            reveal(row, column);
+            let isGameOver = $('.column.hidden').length === $('.column.mine').length ? false : true;
+            if (isGameOver === false) {
+                gameOver(false)
+            }
         }
-    }
-
+        return false;
+    });
 });
