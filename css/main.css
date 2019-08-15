@@ -5,31 +5,110 @@ body{
 h1{
     font-family: 'Sofia'; font-size: 40px;
 }
+
 #board{
     /* border: 3px solid black; */
     display: inline-block;
+    padding: 2px;
+}
+
+.fondo{
+    margin: 0 auto;
+    width: 80%;
+    height: 800px;
+    background-color: #D0E4E7;
+    background-image: url("../img/fondo.png");
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+.row{
+    font-size: 0;
 }
 
 .column{
     display: inline-block;
-    width: 70px;
-    height: 70px;
-    background-color: blue;
+    width: 50px;
+    height: 50px;
+    /* background-color: #D5DBDB;
+     */
+    background: url("../img/cell.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
     border-right: 3px solid #eee;
+    border-bottom: 3px solid #eee;
     padding: 2px;
+    vertical-align: top;
+    color: black;
+    font-size: 20px;
+    line-height: 50px;
+}
+
+/* mobile app */
+@media  screen and (min-height: 480px) and (max-width: 600px)  {
+    .column{
+        width: 30px;
+        height: 30px;
+    }
+}
+/* mobile app -min */
+@media  screen and (min-height: 480px) and (max-width: 390px)  {
+    .column{
+        width: 18px;
+        height: 18px;
+    }
 }
 
 
 
  .column.hidden{
-     background-color: #148F77 ;
+     /* background-color: #148F77 ; */
+     background-image: url("../img/cell_hidden.png");
+     background-repeat:no-repeat;
+     background-position: center center;
+     background-size: 100%;
      cursor: pointer;
  }
  .column.hidden.mine{
-    background-color: red;
+    /* background-color: red; */
+    background: url("../img/cell_hidden.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+    /*  */
 }
 
  .column.hidden:hover{
      background-color: #CA6F1E  ; 
  }
 
+ .column.mine.mine_icon{
+    background: url("../img/mine.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+ }
+
+.column.number_1{
+    background: url("../img/cell_1.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+.column.number_2{
+    background: url("../img/cell_2.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+.column.number_3{
+    background: url("../img/cell_3.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+
+.ocultar{
+    display: none;
+}
