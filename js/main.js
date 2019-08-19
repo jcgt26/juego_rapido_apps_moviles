@@ -1,6 +1,6 @@
 // Conectarlo con index para que cambie segun la eleccion del jugador
 const TOTALROWS = 10;
-const TOTALCOLS = 10;
+const TOTALCOLS =10;
 const $board = $("#board");
 var TOTALMINES = 0;
 
@@ -37,6 +37,7 @@ function loadBoard(rows, columns) {
         $board.append($row);
     }
     console.log(TOTALMINES);
+    updateMinesNumber();
     
     //// assign event click & hold click to board
     $('.column.hidden').each(function () {
@@ -54,6 +55,7 @@ function loadBoard(rows, columns) {
                 if (isGameOver === false) {
                     gameOver(false)
                 }
+                
             }
             return false;
         });
@@ -71,6 +73,11 @@ $('.column.hidden').each(function () {
     mc.on("press", function () {
 
         $this.toggleClass('flag');
+        if($this.hasClass('mine')){
+            TOTALMINES--;
+            updateMinesNumber();
+            
+        }
         return false;
     });
 });
@@ -132,6 +139,10 @@ function reveal(row, column) {
     /////////////////////////////////////////////////////////////////////////
     helper(row, column);
 
+}
+
+function updateMinesNumber(){
+    $('#minesNumber').html(TOTALMINES)
 }
 
 
