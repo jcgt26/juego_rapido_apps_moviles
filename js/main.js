@@ -163,5 +163,9 @@ function updateMinesNumber(){
 //     }
 
 // });
+function Hello(ev){
+    console.log(ev);
+    
+}
 
 
