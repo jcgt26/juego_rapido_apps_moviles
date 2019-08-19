@@ -1,8 +1,3 @@
-$(document).ready(function () {
-    console.log("Init");
-
-});
-
 // Conectarlo con index para que cambie segun la eleccion del jugador
 const TOTALROWS = 10;
 const TOTALCOLS = 10;
@@ -24,7 +19,9 @@ function getMineNumb(i, j) {
     return count;
 }
 function loadBoard(rows, columns) {
-    $board.empty();
+    console.log(board);
+    
+    $board.empty();    
     for (let i = 0; i < rows; i++) {
         const $row = $('<div>').addClass('row');
         for (let j = 0; j < columns; j++) {
@@ -38,6 +35,26 @@ function loadBoard(rows, columns) {
         }
         $board.append($row);
     }
+    //// assign event click & hold click to board
+    $('.column.hidden').each(function () {
+        const $cell = $(this);
+        const row = $cell.data('row');
+        const column = $cell.data('column');
+        var $this = $(this);
+        var mc = new Hammer(this);
+        mc.on("tap", function () {
+            if ($cell.hasClass('mine')) {
+                gameOver(true);
+            } else {
+                reveal(row, column);
+                let isGameOver = $('.column.hidden').length === $('.column.mine').length ? false : true;
+                if (isGameOver === false) {
+                    gameOver(false)
+                }
+            }
+            return false;
+        });
+    });
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -68,6 +85,8 @@ function gameOver(value) {
         restart();
     }, 1000);
 }
+
+
 function reveal(row, column) {
 
     //implement depht- first search (DFS) || check Breadth First Search (BFS)
@@ -128,22 +147,5 @@ function reveal(row, column) {
 //     }
 
 // });
-$('.column.hidden').each(function () {
-    const $cell = $(this);
-    const row = $cell.data('row');
-    const column = $cell.data('column');
-    var $this = $(this);
-    var mc = new Hammer(this);
-    mc.on("tap", function () {
-        if ($cell.hasClass('mine')) {
-            gameOver(true);
-        } else {
-            reveal(row, column);
-            let isGameOver = $('.column.hidden').length === $('.column.mine').length ? false : true;
-            if (isGameOver === false) {
-                gameOver(false)
-            }
-        }
-        return false;
-    });
-});
+
+
