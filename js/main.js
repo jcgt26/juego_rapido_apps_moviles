@@ -2,7 +2,7 @@
 const TOTALROWS = 10;
 const TOTALCOLS = 10;
 const $board = $("#board");
-
+var TOTALMINES = 0;
 
 function getMineNumb(i, j) {
     let count = 0;
@@ -29,12 +29,15 @@ function loadBoard(rows, columns) {
                 .attr('data-column', j)
                 .attr('data-row', i)
             if (Math.random() < 0.095) {
-                $column.addClass('mine');
+                $column.addClass('mine'); //adding mine
+                TOTALMINES++;
             }
             $board.append($column);
         }
         $board.append($row);
     }
+    console.log(TOTALMINES);
+    
     //// assign event click & hold click to board
     $('.column.hidden').each(function () {
         const $cell = $(this);
@@ -83,7 +86,9 @@ function gameOver(value) {
     setTimeout(() => {
         alert(msg);
         restart();
+
     }, 1000);
+    TOTALMINES = 0;
 }
 
 
