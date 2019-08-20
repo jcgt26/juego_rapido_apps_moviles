@@ -15,7 +15,7 @@
 
 <body>
     <!-- Home section -->
-    <section class="section_1" id="section_1">
+    <section class="section_1 " id="section_1">
         <span id="img_main"></span>
         <span id="btn_jugar" onclick="selectSection(3)"></span>
         <span id="btn_score" onclick="selectSection(5)"></span>
@@ -39,8 +39,8 @@
         <span class="back_difficulty" onclick="selectSection(1);"></span>
         <span id="header_difficulty"></span>
         <span id="btn_facil" onclick="selectSection(2)"></span>
-        <span id="btn_medio" onclick="selectSection(2)"></span>
-        <span id="btn_dificil" onclick="selectSection(2)"></span>
+        <span id="btn_medio" onclick="selectSection(2,2)"></span>
+        <span id="btn_dificil" onclick="selectSection(2,3)"></span>
     </section>
 
     <!-- Section Tutorial -->
@@ -62,11 +62,18 @@
 
 
     <!-- Game Over Section -->
-    <section class="section_6 ocultar" id="section_6"></section>
+    <section class="section_6 ocultar" id="section_6">
+            <span id="btn_tryAgain" onclick="selectSection(3)"></span>
+            <span id="btn_getOut" onclick="selectSection(1)"></span>
+    
+    </section>
 
 
     <!-- Game Over Win Section -->
-    <section class="section_7  ocultar" id="section_7"></section>
+    <section class="section_7 ocultar " id="section_7">
+        <span id="btn_tryAgain" onclick="selectSection(3)"></span>
+        <span id="btn_getOut" onclick="selectSection(1)"></span>
+    </section>
 
 
 

@@ -1,16 +1,35 @@
 
 // Conectarlo con index para que cambie segun la eleccion del jugador
 var secciones = [];
-var stack_sections = []
-$(document).ready( function() {
+
+$(document).ready(function () {
     for (let i = 1; i <= 7; i++) {
-        secciones[i] = (document.getElementById('section_'+i+''));
+        secciones[i] = (document.getElementById('section_' + i + ''));
     }
+
 });
-const TOTALROWS = 10;
-const TOTALCOLS =10;
+
+var TOTALROWS = 10;
+var TOTALCOLS = 10;
+
 const $board = $("#board");
 var TOTALMINES = 0;
+$('#btn_medio').click(() => {
+    var TOTALROWS = 15;
+    var TOTALCOLS = 15;
+    loadBoard(TOTALROWS, TOTALCOLS);
+    $('.column.hidden').each(function () {
+        $('.column.hidden').addClass('section_2_nivel_2')
+    });
+});
+$('#btn_dificil').click(() => {
+    var TOTALROWS = 20;
+    var TOTALCOLS = 20;
+    loadBoard(TOTALROWS, TOTALCOLS);
+    $('.column.hidden').each(function () {
+        $('.column.hidden').addClass('section_2_nivel_3')
+    });
+});
 
 function getMineNumb(i, j) {
     let count = 0;
@@ -26,10 +45,12 @@ function getMineNumb(i, j) {
     }
     return count;
 }
+
+
 function loadBoard(rows, columns) {
     console.log(board);
-    
-    $board.empty();    
+    TOTALMINES = 0;
+    $board.empty();
     for (let i = 0; i < rows; i++) {
         const $row = $('<div>').addClass('row');
         for (let j = 0; j < columns; j++) {
@@ -46,7 +67,7 @@ function loadBoard(rows, columns) {
     }
     console.log(TOTALMINES);
     updateMinesNumber();
-    
+
     //// assign event click & hold click to board
     $('.column.hidden').each(function () {
         const $cell = $(this);
@@ -63,7 +84,7 @@ function loadBoard(rows, columns) {
                 if (isGameOver === false) {
                     gameOver(false)
                 }
-                
+
             }
             return false;
         });
@@ -81,10 +102,10 @@ $('.column.hidden').each(function () {
     mc.on("press", function () {
 
         $this.toggleClass('flag');
-        if($this.hasClass('mine')){
+        if ($this.hasClass('mine')) {
             TOTALMINES--;
             updateMinesNumber();
-            
+
         }
         return false;
     });
@@ -95,15 +116,16 @@ function restart() {
 }
 function gameOver(value) {
     let msg = null
-    msg = value == true ? "☢GAME OVER☢" : "YOU WON!! 🐢🐢";
+
     $('.column.mine').addClass('mine_icon')
 
+
     setTimeout(() => {
-        alert(msg);
+        value == true ? selectSection(6) : selectSection(7);
         restart();
 
-    }, 1000);
-    TOTALMINES = 0;
+    }, 3000);
+
 }
 
 
@@ -149,24 +171,24 @@ function reveal(row, column) {
 
 }
 
-function updateMinesNumber(){
+function updateMinesNumber() {
     $('#minesNumber').html(TOTALMINES)
 }
 
-function Hello(ev){
-    console.log(this);
-    
-}
 
-function hide(){
+function hide() {
     for (i in secciones) {
         secciones[i].classList.add("ocultar");
-        
+
     }
 }
 
-function selectSection(target){
+function selectSection(target,) {
+    loadBoard(TOTALROWS,TOTALCOLS)
     hide();
     secciones[target].classList.remove("ocultar");
+
+
+
 }
 
