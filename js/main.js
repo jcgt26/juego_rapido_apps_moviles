@@ -1,14 +1,18 @@
 
 // Conectarlo con index para que cambie segun la eleccion del jugador
 var secciones = [];
+var scores_array,nick_names = [];
 var countTime = 0;
 var intervalTime = 0;
 lastTime = 0
 TOTALROWS = 0;
 TOTALCOLS = 0;
-
+var firebaseConfig;
+var dbRef;
+var score;
+var db;
 $(document).ready(function () {
-    for (let i = 1; i <= 8; i++) {
+    for (let i = 1; i <= 9; i++) {
         secciones[i] = (document.getElementById('section_' + i + ''));
     }
     setTimeout(() => {
@@ -16,13 +20,23 @@ $(document).ready(function () {
 
     }, 2000);
 
-
+    firebaseConfig = {
+        apiKey: "AIzaSyDOP1idU_zKXBL3DphxZyx7sAVgH_NUBeU",
+        authDomain: "salvacrushhtmlcssjs.firebaseapp.com",
+        databaseURL: "https://salvacrushhtmlcssjs.firebaseio.com",
+        projectId: "salvacrushhtmlcssjs",
+        storageBucket: "",
+        messagingSenderId: "518655206592",
+        appId: "1:518655206592:web:856c4d114268f6f6"
+    };
+    firebase.initializeApp(firebaseConfig);
+     db = firebase.firestore();
+     readData();
 
 
 });
 
-// var TOTALROWS = 10;
-// var TOTALCOLS = 10;
+
 const $board = $("#board");
 var TOTALMINES = 0;
 $('#btn_facil').click(() => {
@@ -40,13 +54,13 @@ $('#btn_medio').click(() => {
     countTime = 0;
     intervalTime = setInterval(timeIt, 1000);
 
-    TOTALROWS = 15;
-    TOTALCOLS = 15;
+    TOTALROWS = 13;
+    TOTALCOLS = 13;
     loadBoard(TOTALROWS, TOTALCOLS);
     $('.column.hidden').each(function () {
         $('.column').css({ "transition": "none" });
-        $('.column').css({ "width": "19px", "height": "19px" });
-        $('.column').css({ "transition": "all 1.0s" });
+        $('.column').css({ "width": "22px", "height": "22px" });
+        $('.column').css({ "transition": "all 0.5s" });
     });
 
 
@@ -56,13 +70,13 @@ $('#btn_dificil').click(() => {
     countTime = 0
     intervalTime = setInterval(timeIt, 1000);
 
-    TOTALROWS = 20;
-    TOTALCOLS = 20;
+    TOTALROWS = 16;
+    TOTALCOLS = 16;
     loadBoard(TOTALROWS, TOTALCOLS);
     $('.column.hidden').each(function () {
         $('.column').css({ "transition": "none" });
-        $('.column').css({ "width": "13px", "height": "13px" });
-        $('.column').css({ "transition": "all 1.0s" });
+        $('.column').css({ "width": "18px", "height": "18px" });
+        $('.column').css({ "transition": "all 0.5s" });
     });
 
 });
@@ -125,7 +139,7 @@ function loadBoard(rows, columns) {
                 let isGameOver = $('.column.hidden').length === $('.column.mine').length ? false : true;
 
                 if (isGameOver === false) {
-                    gameOver(false)
+                    gameOver(false);
                 }
 
             }
@@ -169,6 +183,8 @@ function gameOver(value) {
         restart(TOTALROWS, TOTALCOLS);
 
     }, 3000);
+    clearInterval(intervalTime);
+    $('#score_field').text(countTime);
 
 }
 
@@ -228,15 +244,40 @@ function hide() {
 }
 
 function selectSection(target, ) {
-    // loadBoard(TOTALROWS,TOTALCOLS)
+
     hide();
     secciones[target].classList.remove("ocultar");
-    // if($('#btn_facil') || $('#btn_medio')  || $('#btn_dificil') ){
-    //         timer.play();
-
-    // }
 
 
 
+
+}
+
+function addData() {
+    db.collection('scores').add({
+        nick_name: $('#nameScore').val(),
+        score: countTime
+    })
+    .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+}
+
+function readData(){
+    db.collection('scores').get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                console.log(doc.data()["score"]);
+                
+                // scores_array.push(doc.data()["score"])
+                // nick_names.push(doc.data()["nick_name"])
+
+                
+            });
+        })
+    
 }
 

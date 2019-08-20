@@ -19,13 +19,13 @@
     <section class="section_1 ocultar " id="section_1">
         <span id="img_main"></span>
         <span id="btn_jugar" onclick="selectSection(3)"></span>
-        <span id="btn_score" onclick="selectSection(5)"></span>
+        <span id="btn_score" onclick="selectSection(5); readData();"></span>
         <span id="btn_tutorial" onclick="selectSection(4)"></span>
 
     </section>
     <!-- Game section -->
     <section class="section_2 ocultar" id="section_2">
-        <span id="back" onclick="selectSection(1); clearInterval(intervalTime);"></span>
+        <span id="back" onclick="selectSection(3); clearInterval(intervalTime);"></span>
         <!-- <div class="header">
             <img src="/img/header.png" alt="">
         </div> -->
@@ -65,16 +65,18 @@
 
     <!-- Game Over Section -->
     <section class="section_6 ocultar" id="section_6">
-        <span id="btn_tryAgain" onclick="selectSection(3);clearInterval(intervalTime);"></span>
-        <span id="btn_getOut" onclick="selectSection(1);clearInterval(intervalTime);"></span>
+        <span id="btn_tryAgain" onclick="selectSection(3);"></span>
+        <span id="btn_getOut" onclick="selectSection(1);"></span>
 
     </section>
 
 
     <!-- Game Over Win Section -->
     <section class="section_7 ocultar " id="section_7">
-        <span id="btn_tryAgain" onclick="selectSection(3); clearInterval(intervalTime);"></span>
-        <span id="btn_getOut" onclick="selectSection(1); clearInterval(intervalTime);"></span>
+        <span id="btn_tryAgain" onclick="selectSection(3);"></span>
+        <span id="btn_getOut" onclick="selectSection(1); "></span>
+        <span id="score_field">SCO</span>
+        <span id="btn_registrar" onclick="selectSection(9); "></span>
     </section>
 
     <section class="section_8" id="section_8">
@@ -82,6 +84,13 @@
         <span id="loading"></span>
     </section>
 
+    <section class="section_9 ocultar" id="section_9">
+        <input type="text" placeholder="SET A NICKNAME" id="nameScore"">
+        <span id=" btn_getOut" onclick="selectSection(1); "></span>
+        <span id="btn_registrar" onclick="addData(); selectSection(1); "></span>
+        <span id="btn_tryAgain" onclick="selectSection(3);"></span>
+
+    </section>
 
 
     <!-- recordar importar jquery antes que todos los scripts -->
@@ -89,12 +98,18 @@
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="js/jquery.timer.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-firestore.js"></script>
 
     <script src="https://hammerjs.github.io/dist/hammer.js"></script>
     <script src="js/main.js"></script>
-    <script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
 
-    </script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+
 
 </body>
 
