@@ -101,6 +101,67 @@ h1{
 }
 /* ------------------ end section main------------------ */
 
+/* ------------------------Game Section---------------- */
+
+#img_game{
+    position:fixed;
+    top:8%;
+    left: 25%;
+    font-family:sans-serif;
+    font-size:40px;
+    background:black;
+    color:white;
+    width:230px;
+    height:85px;
+    line-height:60px;
+    cursor:pointer;
+    background: url("../img/header.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+#back{
+    position:fixed;
+    top:62px;
+    left: 18px;
+    font-family:sans-serif;
+    font-size:40px;
+    background:black;
+    color:white;
+    width:45px;
+    height:85px;
+    line-height:60px;
+    cursor:pointer;
+    background: url("../img/backbutton.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+  }
+#minesNumber{
+    position:fixed;
+    right: 14px;
+    top: 62px;
+    font-family:sans-serif;
+    font-size:22px;
+    background:black;
+    color:black;
+    width:70px;
+    height:85px;
+    line-height:77px;
+    cursor:pointer;
+    background: url("../img/score.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+  }
+/* ------------------ end Game main------------------ */
+
+
+
+
+
+
+
 /* ------------------------Difficulty Section---------------- */
 .section_3{
     /* background-color: red; */
@@ -495,40 +556,7 @@ h1{
     background-size: 100%;
 }
 
-#back{
-    position:fixed;
-    top:3px;
-    left: 18px;
-    font-family:sans-serif;
-    font-size:40px;
-    background:black;
-    color:white;
-    width:45px;
-    height:85px;
-    line-height:60px;
-    cursor:pointer;
-    background: url("../img/backbutton.png") no-repeat;
-    background-repeat:no-repeat;
-    background-position: center center;
-    background-size: 100%;
-  }
-#minesNumber{
-    position:fixed;
-    right: 18px;
-    top: 3px;
-    font-family:sans-serif;
-    font-size:22px;
-    background:black;
-    color:black;
-    width:70px;
-    height:85px;
-    line-height:77px;
-    cursor:pointer;
-    background: url("../img/score.png") no-repeat;
-    background-repeat:no-repeat;
-    background-position: center center;
-    background-size: 100%;
-  }
+
   
 .ocultar{
     display: none;
