@@ -1,56 +1,91 @@
 
 // Conectarlo con index para que cambie segun la eleccion del jugador
 var secciones = [];
+var countTime = 0;
+var intervalTime = 0;
+lastTime = 0
+TOTALROWS = 0;
+TOTALCOLS = 0;
 
 $(document).ready(function () {
     for (let i = 1; i <= 8; i++) {
         secciones[i] = (document.getElementById('section_' + i + ''));
     }
     setTimeout(() => {
-            selectSection(1);
+        selectSection(1);
 
     }, 2000);
- 
+
+
+
 
 });
 
-var TOTALROWS = 10;
-var TOTALCOLS = 10;
+// var TOTALROWS = 10;
+// var TOTALCOLS = 10;
 const $board = $("#board");
-
 var TOTALMINES = 0;
+$('#btn_facil').click(() => {
+    countTime = 0;
+    intervalTime = setInterval(timeIt, 1000);
+    TOTALROWS = 10;
+    TOTALCOLS = 10;
+    loadBoard(TOTALROWS, TOTALCOLS);
+
+
+
+});
+
 $('#btn_medio').click(() => {
-    let TOTALROWS = 13;
-    let TOTALCOLS = 13;
-    restart(TOTALROWS,TOTALCOLS)
+    countTime = 0;
+    intervalTime = setInterval(timeIt, 1000);
+
+    TOTALROWS = 15;
+    TOTALCOLS = 15;
+    loadBoard(TOTALROWS, TOTALCOLS);
     $('.column.hidden').each(function () {
-        $('.column').css({"width": "19px", "height": "19px"});
+        $('.column').css({ "transition": "none" });
+        $('.column').css({ "width": "19px", "height": "19px" });
+        $('.column').css({ "transition": "all 1.0s" });
     });
+
+
 });
 
 $('#btn_dificil').click(() => {
-    let TOTALROWS = 15;
-    let TOTALCOLS = 15;
-    restart(TOTALROWS, TOTALCOLS);
+    countTime = 0
+    intervalTime = setInterval(timeIt, 1000);
+
+    TOTALROWS = 20;
+    TOTALCOLS = 20;
+    loadBoard(TOTALROWS, TOTALCOLS);
     $('.column.hidden').each(function () {
-        $('.column').css({"width": "13px", "height": "13px"});
+        $('.column').css({ "transition": "none" });
+        $('.column').css({ "width": "13px", "height": "13px" });
+        $('.column').css({ "transition": "all 1.0s" });
     });
+
 });
 
+function timeIt() {
+    countTime++;
+    console.log(countTime);
+
+}
 
 function getMineNumb(i, j) {
-    let count = 0;
+    let Time = 0;
     for (let di = -1; di <= 1; di++) {
         for (let dj = -1; dj <= 1; dj++) {
             const ni = i + di;
             const nj = j + dj;
             if (ni >= TOTALROWS || nj >= TOTALCOLS || nj < 0 || ni < 0) continue;
             const $cell = $(`.column.hidden[data-row=${ni}][data-column=${nj}]`)
-            if ($cell.hasClass('mine')) count++;
+            if ($cell.hasClass('mine')) Time++;
         }
 
     }
-    return count;
+    return Time;
 }
 
 
@@ -97,27 +132,27 @@ function loadBoard(rows, columns) {
             return false;
         });
     });
-    
-$('.column.hidden').each(function () {
-    var $this = $(this);
-    var mc = new Hammer(this);
-    mc.on("press", function () {
 
-        $this.toggleClass('flag');
-        if ($this.hasClass('mine')) {
-            TOTALMINES--;
-            updateMinesNumber();
+    $('.column.hidden').each(function () {
+        var $this = $(this);
+        var mc = new Hammer(this);
+        mc.on("press", function () {
 
-        }
-        return false;
+            $this.toggleClass('flag');
+            if ($this.hasClass('mine')) {
+                TOTALMINES--;
+                updateMinesNumber();
+
+            }
+            return false;
+        });
     });
-});
 }
 
 ///////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////
-loadBoard(TOTALROWS, TOTALCOLS);
+// loadBoard(TOTALROWS, TOTALCOLS);
 
 
 function restart(rows, cols) {
@@ -131,7 +166,7 @@ function gameOver(value) {
 
     setTimeout(() => {
         value == true ? selectSection(6) : selectSection(7);
-        restart(TOTALROWS,TOTALCOLS);
+        restart(TOTALROWS, TOTALCOLS);
 
     }, 3000);
 
@@ -192,10 +227,14 @@ function hide() {
     }
 }
 
-function selectSection(target,) {
+function selectSection(target, ) {
     // loadBoard(TOTALROWS,TOTALCOLS)
     hide();
     secciones[target].classList.remove("ocultar");
+    // if($('#btn_facil') || $('#btn_medio')  || $('#btn_dificil') ){
+    //         timer.play();
+
+    // }
 
 
 
