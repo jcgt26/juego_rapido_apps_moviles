@@ -15,15 +15,15 @@
 
 <body>
     <!-- Home section -->
-    <section class="section_main ocultar">
+    <section class="section_1" id="section_1">
         <span id="img_main"></span>
-        <span id="btn_jugar" onclick="Hello(this)"></span>
-        <span id="btn_score" onclick="Hello(this)"></span>
-        <span id="btn_tutorial" onclick="Hello(this)"></span>
+        <span id="btn_jugar" onclick="selectSection(3)"></span>
+        <span id="btn_score" onclick="selectSection(5)"></span>
+        <span id="btn_tutorial" onclick="selectSection(4)"></span>
     </section>
     <!-- Game section -->
-    <section class="section_game ocultar">
-        <span id="back"></span>
+    <section class="section_2 ocultar" id="section_2">
+        <span id="back" onclick="selectSection(1);"></span>
         <div class="header">
             <img src="/img/header.png" alt="">
         </div>
@@ -34,30 +34,40 @@
     </section>
 
     <!-- Difficulty section -->
-    <section class="section_difficulty ocultar">
-        <span class="back_difficulty"></span>
+    <section class="section_3 ocultar" id="section_3">
+        <span class="back_difficulty" onclick="selectSection(1);"></span>
         <span id="header_difficulty"></span>
-        <span id="btn_facil"></span>
-        <span id="btn_medio"></span>
-        <span id="btn_dificil"></span>
+        <span id="btn_facil" onclick="selectSection(2)"></span>
+        <span id="btn_medio" onclick="selectSection(2)"></span>
+        <span id="btn_dificil" onclick="selectSection(2)"></span>
     </section>
 
-    <!-- Score Section -->
-    <section class="section_score ocultar"></section>
-
-
-    <!-- Game Over Section -->
-    <section class="section_gameOver ocultar"></section>
-
-
-    <!-- Game Over Win Section -->
-    <section class="section_gameOverWin ocultar "></section>
-
     <!-- Section Tutorial -->
-    <section class="section_tutorial ">
+    <section class="section_4 ocultar" id="section_4" onclick="selectSection(1);">
         <span class="back_difficulty"></span>
         <span id="tutorial"></span>
     </section>
+
+    <!-- Score Section -->
+    <section class="section_5 ocultar " id="section_5">
+        <span class="back_difficulty" onclick="selectSection(1);"></span>
+        <span id="turtle_img"></span>
+        <span id="title_score"></span>
+        <span id="num_1" class="score_line">1. </span>
+        <span id="num_2" class="score_line">2. </span>
+        <span id="num_3" class="score_line">3. </span>
+        <span id="num_4" class="score_line">4. </span>
+    </section>
+
+
+    <!-- Game Over Section -->
+    <section class="section_6 ocultar" id="section_6"></section>
+
+
+    <!-- Game Over Win Section -->
+    <section class="section_7  ocultar" id="section_7"></section>
+
+
 
 
     <!-- recordar importar jquery antes que todos los scripts -->

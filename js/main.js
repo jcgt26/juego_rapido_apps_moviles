@@ -1,4 +1,12 @@
+
 // Conectarlo con index para que cambie segun la eleccion del jugador
+var secciones = [];
+var stack_sections = []
+$(document).ready( function() {
+    for (let i = 1; i <= 7; i++) {
+        secciones[i] = (document.getElementById('section_'+i+''));
+    }
+});
 const TOTALROWS = 10;
 const TOTALCOLS =10;
 const $board = $("#board");
@@ -145,27 +153,20 @@ function updateMinesNumber(){
     $('#minesNumber').html(TOTALMINES)
 }
 
-
-// $board.on('click', '.column.hidden', function () {
-//     const $cell = $(this);
-//     const row = $cell.data('row');
-//     const column = $cell.data('column');
-//     console.log(this);
-
-//     if ($cell.hasClass('mine')) {
-//         gameOver(true);
-//     } else {
-//         reveal(row, column);
-//         let isGameOver = $('.column.hidden').length === $('.column.mine').length ? false : true;
-//         if (isGameOver === false) {
-//             gameOver(false)
-//         }
-//     }
-
-// });
 function Hello(ev){
     console.log(this);
     
 }
 
+function hide(){
+    for (i in secciones) {
+        secciones[i].classList.add("ocultar");
+        
+    }
+}
+
+function selectSection(target){
+    hide();
+    secciones[target].classList.remove("ocultar");
+}
 
