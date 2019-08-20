@@ -3,33 +3,40 @@
 var secciones = [];
 
 $(document).ready(function () {
-    for (let i = 1; i <= 7; i++) {
+    for (let i = 1; i <= 8; i++) {
         secciones[i] = (document.getElementById('section_' + i + ''));
     }
+    setTimeout(() => {
+            selectSection(1);
+
+    }, 2000);
+ 
 
 });
 
 var TOTALROWS = 10;
 var TOTALCOLS = 10;
-
 const $board = $("#board");
+
 var TOTALMINES = 0;
 $('#btn_medio').click(() => {
-    var TOTALROWS = 15;
-    var TOTALCOLS = 15;
-    loadBoard(TOTALROWS, TOTALCOLS);
+    let TOTALROWS = 13;
+    let TOTALCOLS = 13;
+    restart(TOTALROWS,TOTALCOLS)
     $('.column.hidden').each(function () {
-        $('.column.hidden').addClass('section_2_nivel_2')
+        $('.column').css({"width": "19px", "height": "19px"});
     });
 });
+
 $('#btn_dificil').click(() => {
-    var TOTALROWS = 20;
-    var TOTALCOLS = 20;
-    loadBoard(TOTALROWS, TOTALCOLS);
+    let TOTALROWS = 15;
+    let TOTALCOLS = 15;
+    restart(TOTALROWS, TOTALCOLS);
     $('.column.hidden').each(function () {
-        $('.column.hidden').addClass('section_2_nivel_3')
+        $('.column').css({"width": "13px", "height": "13px"});
     });
 });
+
 
 function getMineNumb(i, j) {
     let count = 0;
@@ -48,13 +55,13 @@ function getMineNumb(i, j) {
 
 
 function loadBoard(rows, columns) {
-    console.log(board);
+    // console.log(board);
     TOTALMINES = 0;
     $board.empty();
     for (let i = 0; i < rows; i++) {
         const $row = $('<div>').addClass('row');
         for (let j = 0; j < columns; j++) {
-            const $column = $('<div>').addClass('column hidden')
+            const $column = $('<div>').addClass('column hidden ')
                 .attr('data-column', j)
                 .attr('data-row', i)
             if (Math.random() < 0.095) {
@@ -81,6 +88,7 @@ function loadBoard(rows, columns) {
             } else {
                 reveal(row, column);
                 let isGameOver = $('.column.hidden').length === $('.column.mine').length ? false : true;
+
                 if (isGameOver === false) {
                     gameOver(false)
                 }
@@ -89,13 +97,7 @@ function loadBoard(rows, columns) {
             return false;
         });
     });
-}
-
-///////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////////////////
-loadBoard(TOTALROWS, TOTALCOLS);
-
+    
 $('.column.hidden').each(function () {
     var $this = $(this);
     var mc = new Hammer(this);
@@ -110,9 +112,16 @@ $('.column.hidden').each(function () {
         return false;
     });
 });
+}
 
-function restart() {
-    loadBoard(TOTALROWS, TOTALCOLS);
+///////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////
+loadBoard(TOTALROWS, TOTALCOLS);
+
+
+function restart(rows, cols) {
+    loadBoard(rows, cols);
 }
 function gameOver(value) {
     let msg = null
@@ -122,7 +131,7 @@ function gameOver(value) {
 
     setTimeout(() => {
         value == true ? selectSection(6) : selectSection(7);
-        restart();
+        restart(TOTALROWS,TOTALCOLS);
 
     }, 3000);
 
@@ -184,7 +193,7 @@ function hide() {
 }
 
 function selectSection(target,) {
-    loadBoard(TOTALROWS,TOTALCOLS)
+    // loadBoard(TOTALROWS,TOTALCOLS)
     hide();
     secciones[target].classList.remove("ocultar");
 
