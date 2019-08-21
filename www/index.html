@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+    <link rel="stylesheet" href="fontawesome-free-5.10.1-web/css/all.css">
+    <link rel="shortcut icon" href="img/flag.ico" />
+
+    <title>Salva Crush</title>
+</head>
+
+<body>
+
+    <!-- Home section -->
+    <section class="section_1 ocultar " id="section_1">
+        <span id="img_main"></span>
+        <span id="btn_jugar" onclick="selectSection(3)"></span>
+        <span id="btn_score" onclick="selectSection(5);"></span>
+        <span id="btn_tutorial" onclick="selectSection(4)"></span>
+
+    </section>
+    <!-- Game section -->
+    <section class="section_2 ocultar" id="section_2">
+        <span id="back" onclick="selectSection(3); clearInterval(intervalTime);"></span>
+        <span id="img_game"></span>
+        <span id="minesNumber"></span>
+        <div id="board"></div>
+        <div class="footer">
+        </div>
+    </section>
+
+    <!-- Difficulty section -->
+    <section class="section_3 ocultar" id="section_3">
+        <span class="back_difficulty" onclick="selectSection(1);"></span>
+        <span id="header_difficulty"></span>
+        <span id="btn_facil" onclick="selectSection(2)"></span>
+        <span id="btn_medio" onclick="selectSection(2)"></span>
+        <span id="btn_dificil" onclick="selectSection(2)"></span>
+    </section>
+
+    <!-- Section Tutorial -->
+    <section class="section_4 ocultar" id="section_4" onclick="selectSection(1);">
+        <span class="back_difficulty"></span>
+        <span id="tutorial"></span>
+    </section>
+
+    <!-- Score Section -->
+    <section class="section_5 ocultar " id="section_5">
+        <span class="back_difficulty" onclick="selectSection(1);"></span>
+        <span id="turtle_img"></span>
+        <span id="title_score"></span>
+        <span id="num_1" class="score_line"> </span>
+        <span id="num_2" class="score_line"> </span>
+        <span id="num_3" class="score_line"> </span>
+        <span id="num_4" class="score_line"></span>
+    </section>
+
+
+    <!-- Game Over Section -->
+    <section class="section_6 ocultar" id="section_6">
+        <span id="btn_tryAgain" onclick="selectSection(3);"></span>
+        <span id="btn_getOut" onclick="selectSection(1);"></span>
+
+    </section>
+
+
+    <!-- Game Over Win Section -->
+    <section class="section_7 ocultar " id="section_7">
+        <span id="logo_win"></span>
+        <span id="btn_tryAgain" onclick="selectSection(3);"></span>
+        <span id="btn_getOut" onclick="selectSection(1); "></span>
+        <span id="score_field">SCO</span>
+        <span id="btn_registrar" onclick="selectSection(9); "></span>
+    </section>
+
+    <section class="section_8" id="section_8">
+        <!-- <span id="img_main"></span> -->
+        <span id="loading"></span>
+    </section>
+
+    <section class="section_9 ocultar" id="section_9">
+            <span id="img_game_nick"></span>
+        <input type="text" placeholder="SET A NICKNAME" id="nameScore"">
+        <span id=" btn_getOut" onclick="selectSection(1); "></span>
+        <span id="btn_registrar_nick" onclick="addData(); selectSection(1); "></span>
+        <span id="btn_tryAgain_nick" onclick="selectSection(3);"></span>
+
+    </section>
+
+
+    <!-- recordar importar jquery antes que todos los scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="js/jquery.timer.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-firestore.js"></script>
+
+    <script src="https://hammerjs.github.io/dist/hammer.js"></script>
+    <script src="js/main.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <script>
+    </script>
+
+</body>
+
+</html>

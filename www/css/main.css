@@ -1,0 +1,786 @@
+html,body{
+    margin:0;
+    padding:0;
+    text-align:center;
+    height: 100%;
+    background-color: #D0E4E7;
+
+}
+h1{
+    font-family: 'Sofia'; font-size: 40px;
+}
+
+#board{
+    /* border: 3px solid black; */
+    display: inline-block;
+    padding: 2px;
+    margin-top: 200px;
+}
+
+/* div#load_screen{
+    background: #fff;
+    background-image: url("../img/loading.png");
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+    opacity: 1;
+    position: fixed;
+    /* z-index: 10; */
+    /* top: 0px;
+    width: 100%;
+    height: 1600px;
+}
+
+div#load_screen > div#loading{
+    color: #fff;
+    width: 120px;
+    height: 24px;
+    margin:  300px auto;
+} */ 
+
+
+#loading{
+    position:fixed;
+    top:31%;
+    left: 13%;
+    font-family:sans-serif;
+    font-size:40px;
+    background:black;
+    color:white;
+    width:324px;
+    height:259px;
+    line-height:60px;
+    cursor:pointer;
+    background: url("../img/loading.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+
+/* ---------------section main---------------------- */
+.section_1{
+    /* background-color: red; */
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/fondo.png");
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+#img_main{
+        position:fixed;
+        top:28%;
+        left: 30%;
+        font-family:sans-serif;
+        font-size:40px;
+        background:black;
+        color:white;
+        width:218px;
+        height:140px;
+        line-height:60px;
+        cursor:pointer;
+        background: url("../img/main_image.png") no-repeat;
+        background-repeat:no-repeat;
+        background-position: center center;
+        background-size: 100%;
+      
+}
+#btn_jugar{
+    position:fixed;
+    top:45%;
+    left: 23%;
+    font-family:sans-serif;
+    font-size:40px;
+    background:black;
+    color:white;
+    width:240px;
+    height:32px;
+    line-height:60px;
+    cursor:pointer;
+    background: url("../img/btn_jugar.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+  
+}
+#btn_score{
+    position:fixed;
+    top:50%;
+    left: 23%;
+    font-family:sans-serif;
+    font-size:40px;
+    background:black;
+    color:white;
+    width:240px;
+    height:32px;
+    line-height:60px;
+    cursor:pointer;
+    background: url("../img/btn_score.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+  
+}
+#btn_tutorial{
+    position:fixed;
+    top:55%;
+    left: 23%;
+    font-family:sans-serif;
+    font-size:40px;
+    background:black;
+    color:white;
+    width:240px;
+    height:32px;
+    line-height:60px;
+    cursor:pointer;
+    background: url("../img/btn_tutorial.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+  
+}
+/* ------------------ end section main------------------ */
+
+/* ------------------------Game Section---------------- */
+
+
+
+#img_game{
+    position:fixed;
+    top:8%;
+    left: 22%;
+    font-family:sans-serif;
+    font-size:40px;
+    background:black;
+    color:white;
+    width:230px;
+    height:85px;
+    line-height:60px;
+    cursor:pointer;
+    background: url("../img/header.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+#back{
+    position:fixed;
+    top:62px;
+    left: 18px;
+    font-family:sans-serif;
+    font-size:40px;
+    background:black;
+    color:white;
+    width:45px;
+    height:85px;
+    line-height:60px;
+    cursor:pointer;
+    background: url("../img/backbutton.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+  }
+#minesNumber{
+    position:fixed;
+    right: 14px;
+    top: 62px;
+    font-family:sans-serif;
+    font-size:22px;
+    background:black;
+    color:black;
+    width:70px;
+    height:85px;
+    line-height:77px;
+    cursor:pointer;
+    background: url("../img/score.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+  }
+  /* Rows - Columns */
+.row{
+    font-size: 0;
+}
+
+.column{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    /* background-color: #D5DBDB;
+     */
+    background: url("../img/cell.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+    border-right: 3px solid #eee;
+    border-bottom: 3px solid #eee;
+    padding: 2px;
+    vertical-align: top;
+    color: black;
+    font-size: 20px;
+    line-height: 50px;
+    transition: all 0.5s;
+}
+
+/* mobile app */
+@media  screen and (min-height: 480px) and (max-width: 600px)  {
+    .column{
+        width: 30px;
+        height: 30px;
+    }
+}
+/* mobile app -min */
+@media  screen and (min-height: 480px) and (max-width: 390px)  {
+    .column{
+        width: 18px;
+        height: 18px;
+    }
+}
+
+.section_2_nivel_2{
+    width: 19px;
+    height: 19px;
+
+}
+.section_2_nivel_3{
+    width: 13px;
+    height: 13px;
+
+}
+
+
+ .column.hidden{
+     /* background-color: #148F77 ; */
+     background-image: url("../img/cell_hidden.png");
+     background-repeat:no-repeat;
+     background-position: center center;
+     background-size: 100%;
+     cursor: pointer;
+ }
+ .column.hidden.mine{
+    /* background-color: red; */
+    background: url("../img/cell_hidden.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+    /*  */
+}
+
+
+
+ .column.mine.mine_icon{
+    background: url("../img/mine.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+ }
+
+.column.number_1{
+    background: url("../img/cell_1.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+.column.number_2{
+    background: url("../img/cell_2.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+.column.number_3{
+    background: url("../img/cell_3.png") no-repeat;
+    background-repeat: no-repeat, no-repeat, repeat-y;
+    background-position: center top, center bottom, center center;
+    background-size: 100%;
+}
+
+.column.hidden.flag{
+    background: url("../img/flag.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+/* ------------------ end Game main------------------ */
+
+
+
+
+
+
+
+/* ------------------------Difficulty Section---------------- */
+.section_3{
+    /* background-color: red; */
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/fondo_dificultad2.png");
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+#header_difficulty{
+    position:fixed;
+    top:31%;
+    left: 25%;
+    font-family:sans-serif;
+    font-size:40px;
+    background:black;
+    color:white;
+    width:221px;
+    height:79px;
+    line-height:60px;
+    cursor:pointer;
+    background: url("../img/header.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+
+}
+#btn_facil{
+    position:fixed;
+    top:45%;
+    left: 23%;
+    font-family:sans-serif;
+    font-size:40px;
+    background:black;
+    color:white;
+    width:240px;
+    height:32px;
+    line-height:60px;
+    cursor:pointer;
+    background: url("../img/btn_facil.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+  
+}
+#btn_medio{
+    position:fixed;
+    top:50%;
+    left: 23%;
+    font-family:sans-serif;
+    font-size:40px;
+    background:black;
+    color:white;
+    width:240px;
+    height:32px;
+    line-height:60px;
+    cursor:pointer;
+    background: url("../img/btn_medio.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+  
+}
+#btn_dificil{
+    position:fixed;
+    top:55%;
+    left: 23%;
+    font-family:sans-serif;
+    font-size:40px;
+    background:black;
+    color:white;
+    width:240px;
+    height:32px;
+    line-height:60px;
+    cursor:pointer;
+    background: url("../img/btn_dificil.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+  
+}
+
+.back_difficulty{
+    position:fixed;
+    top:120px;
+    left: 18px;
+    font-family:sans-serif;
+    font-size:40px;
+    background:black;
+    color:white;
+    width:45px;
+    height:85px;
+    line-height:60px;
+    cursor:pointer;
+    background: url("../img/backbutton.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+  }
+
+/* --------------------end Difficulty Section---------------- */
+
+
+/* ------------------------tutorial Section---------------- */
+.section_4{
+    /* background-color: red; */
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/fondo_dificultad2.png");
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+
+#tutorial{
+    position:fixed;
+    top:34%;
+    left: 20%;
+    font-family:sans-serif;
+    font-size:40px;
+    background:black;
+    color:white;
+    width:266px;
+    height:371px;
+    line-height:60px;
+    cursor:pointer;
+    background: url("../img/tutorial.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+/* --------------------end tutorial Section---------------- */
+
+/* ------------------------Score Section---------------- */
+.section_5{
+    /* background-color: red; */
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/fondo_dificultad2.png");
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+#title_score{
+    position:fixed;
+    top:42%;
+    left: 20%;
+    font-family:sans-serif;
+    font-size:40px;
+    background:black;
+    color:white;
+    width:266px;
+    height:46px;
+    line-height:60px;
+    cursor:pointer;
+    background: url("../img/score_title.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+#turtle_img{
+    position:fixed;
+    top:26%;
+    left: 54%;
+    font-family:sans-serif;
+    font-size:40px;
+    background:black;
+    color:white;
+    width:140px;
+    height:117px;
+    line-height:60px;
+    cursor:pointer;
+    background: url("../img/turle_score.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+#num_1{
+    position:fixed;
+    top:46%;
+    left: 21%;
+    font-family:sans-serif;
+    font-size:40px;
+    width:250px;
+    height:57px;
+    line-height:58px;
+    cursor:pointer;
+    /* text-align: cen; */
+    font-size: 18px;
+}
+#num_2{
+    position:fixed;
+    top:50%;
+    left: 21%;
+    font-family:sans-serif;
+    font-size:40px;
+    width:250px;
+    height:57px;
+    line-height:58px;
+    cursor:pointer;
+    /* text-align: cen; */
+    font-size: 18px;
+}
+#num_3{
+    position:fixed;
+    top:54%;
+    left: 21%;
+    font-family:sans-serif;
+    font-size:40px;
+    width:250px;
+    height:57px;
+    line-height:58px;
+    cursor:pointer;
+    /* text-align: cen; */
+    font-size: 18px;
+}
+#num_4{
+    position:fixed;
+    top:58%;
+    left: 21%;
+    font-family:sans-serif;
+    font-size:40px;
+    width:250px;
+    height:57px;
+    line-height:58px;
+    cursor:pointer;
+    /* text-align: cen; */
+    font-size: 18px;
+}
+.score_line{
+
+    background: url("../img/score_line.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+
+
+
+
+
+
+/* --------------------end Score Section---------------- */
+
+
+/* ---------------------- Game O Section---------------- */
+.section_6{
+    /* background-color: red; */
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/Game_over.png");
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+/* --------------------end Game O Section--------------- */
+
+
+/* ------------------- Game O Win Section--------------- */
+.section_7{
+    /* background-color: red; */
+
+}
+#logo_win{
+    position:fixed;
+    top:28%;
+    left: 9%;
+    font-family:sans-serif;
+    font-size:40px;
+    font-weight: bold;
+    /* background:black; */
+    color:#000;
+    width:366px;
+    height:243px;
+    line-height:93px;
+    cursor:pointer;
+    background: url("../img/win.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+#score_field{
+    position:fixed;
+    bottom:30%;
+    left: 35%;
+    font-family:sans-serif;
+    font-size:40px;
+    font-weight: bold;
+    /* background:black; */
+    color:#000;
+    width:122px;
+    height:106px;
+    line-height:93px;
+    cursor:pointer;
+    background: url("../img/score.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+
+#btn_registrar{
+    position:fixed;
+    bottom:20%;
+    left: 25%;
+    font-family:sans-serif;
+    font-size:40px;
+    font-weight: bold;
+    /* background:black; */
+    color:#000;
+    width:216px;
+    height:39px;
+    line-height:93px;
+    cursor:pointer;
+    background: url("../img/REGISTRO.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+
+#nameScore{
+ 
+        position:fixed;
+        top:39%;
+        left: 21%;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size:40px;
+        width:250px;
+        height:45px;
+        line-height:58px;
+        cursor:pointer;
+        text-align: center;
+        font-size: 18px;
+    
+}
+/* ------------------end Game O Win Section------------- */
+
+
+/* --------------------Score-Info Section------------------ */
+.section_9{
+            /* background-color: red; */
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/fondo_dificultad2.png");
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+#btn_registrar_nick{
+    position:fixed;
+    bottom:47%;
+    left: 25%;
+    font-family:sans-serif;
+    font-size:40px;
+    font-weight: bold;
+    /* background:black; */
+    color:#000;
+    width:216px;
+    height:39px;
+    line-height:93px;
+    cursor:pointer;
+    background: url("../img/REGISTRO.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+#btn_tryAgain_nick{
+    position:fixed;
+    bottom:42%;
+    left: 25%;
+    font-family:sans-serif;
+    font-size:40px;
+    background:black;
+    color:white;
+    width:216px;
+    height:39px;
+    line-height:60px;
+    cursor:pointer;
+    background: url("../img/jugar_de_nuevo.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+
+#img_game_nick{
+    position:fixed;
+    top:29%;
+    left: 25%;
+    font-family:sans-serif;
+    font-size:40px;
+    background:black;
+    color:white;
+    width:218px;
+    height:78px;
+    line-height:60px;
+    cursor:pointer;
+    background: url("../img/header.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+  
+}
+
+
+
+/* ----------------end Score-Info Section------------------ */
+#btn_tryAgain{
+    position:fixed;
+    bottom:15%;
+    left: 25%;
+    font-family:sans-serif;
+    font-size:40px;
+    background:black;
+    color:white;
+    width:216px;
+    height:39px;
+    line-height:60px;
+    cursor:pointer;
+    background: url("../img/jugar_de_nuevo.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+#btn_getOut{
+    position:fixed;
+    bottom:10%;
+    left: 25%;
+    font-family:sans-serif;
+    font-size:40px;
+    background:black;
+    color:white;
+    width:216px;
+    height:39px;
+    line-height:60px;
+    cursor:pointer;
+    background: url("../img/salir.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+
+
+
+/* Footer - headers */
+
+/* .header{
+
+    background-size: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 160px;
+    margin: 0 auto;
+    background: url("../img/header.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+
+} */
+
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 140px;;
+    background: url("../img/footer.png") no-repeat;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+
+
+  
+.ocultar{
+    display: none;
+}
