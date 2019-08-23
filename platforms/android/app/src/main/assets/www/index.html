@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
     <link rel="stylesheet" href="fontawesome-free-5.10.1-web/css/all.css">
-    <link rel="shortcut icon" href="img/flag.ico" />
+    <!-- <link rel="shortcut icon" href="img/flag.ico" /> -->
 
     <title>Salva Crush</title>
 </head>
@@ -19,16 +19,13 @@
     <section class="section_1 ocultar " id="section_1">
         <span id="img_main"></span>
         <span id="btn_jugar" onclick="selectSection(3)"></span>
-        <span id="btn_score" onclick="selectSection(5); readData();"></span>
+        <span id="btn_score" onclick="selectSection(5);"></span>
         <span id="btn_tutorial" onclick="selectSection(4)"></span>
 
     </section>
     <!-- Game section -->
     <section class="section_2 ocultar" id="section_2">
         <span id="back" onclick="selectSection(3); clearInterval(intervalTime);"></span>
-        <!-- <div class="header">
-            <img src="/img/header.png" alt="">
-        </div> -->
         <span id="img_game"></span>
         <span id="minesNumber"></span>
         <div id="board"></div>
@@ -41,8 +38,8 @@
         <span class="back_difficulty" onclick="selectSection(1);"></span>
         <span id="header_difficulty"></span>
         <span id="btn_facil" onclick="selectSection(2)"></span>
-        <span id="btn_medio" onclick="selectSection(2,2)"></span>
-        <span id="btn_dificil" onclick="selectSection(2,3)"></span>
+        <span id="btn_medio" onclick="selectSection(2)"></span>
+        <span id="btn_dificil" onclick="selectSection(2)"></span>
     </section>
 
     <!-- Section Tutorial -->
@@ -56,10 +53,10 @@
         <span class="back_difficulty" onclick="selectSection(1);"></span>
         <span id="turtle_img"></span>
         <span id="title_score"></span>
-        <span id="num_1" class="score_line">1. </span>
-        <span id="num_2" class="score_line">2. </span>
-        <span id="num_3" class="score_line">3. </span>
-        <span id="num_4" class="score_line">4. </span>
+        <span id="num_1" class="score_line"> </span>
+        <span id="num_2" class="score_line"> </span>
+        <span id="num_3" class="score_line"> </span>
+        <span id="num_4" class="score_line"></span>
     </section>
 
 
@@ -73,6 +70,7 @@
 
     <!-- Game Over Win Section -->
     <section class="section_7 ocultar " id="section_7">
+        <span id="logo_win"></span>
         <span id="btn_tryAgain" onclick="selectSection(3);"></span>
         <span id="btn_getOut" onclick="selectSection(1); "></span>
         <span id="score_field">SCO</span>
@@ -85,10 +83,11 @@
     </section>
 
     <section class="section_9 ocultar" id="section_9">
+            <span id="img_game_nick"></span>
         <input type="text" placeholder="SET A NICKNAME" id="nameScore"">
         <span id=" btn_getOut" onclick="selectSection(1); "></span>
-        <span id="btn_registrar" onclick="addData(); selectSection(1); "></span>
-        <span id="btn_tryAgain" onclick="selectSection(3);"></span>
+        <span id="btn_registrar_nick" onclick="addData(); selectSection(1); "></span>
+        <span id="btn_tryAgain_nick" onclick="selectSection(3);"></span>
 
     </section>
 
@@ -109,7 +108,8 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#config-web-app -->
 
-
+    <script>
+    </script>
 
 </body>
 

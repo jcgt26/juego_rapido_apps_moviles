@@ -1,7 +1,9 @@
 
-// Conectarlo con index para que cambie segun la eleccion del jugador
+
 var secciones = [];
-var scores_array,nick_names = [];
+var scores_array = [];
+var names_array = [];
+var top_scores = []
 var countTime = 0;
 var intervalTime = 0;
 lastTime = 0
@@ -11,6 +13,7 @@ var firebaseConfig;
 var dbRef;
 var score;
 var db;
+var promise;
 $(document).ready(function () {
     for (let i = 1; i <= 9; i++) {
         secciones[i] = (document.getElementById('section_' + i + ''));
@@ -30,9 +33,35 @@ $(document).ready(function () {
         appId: "1:518655206592:web:856c4d114268f6f6"
     };
     firebase.initializeApp(firebaseConfig);
-     db = firebase.firestore();
-     readData();
+    db = firebase.firestore();
+    promise = new Promise((resolve, reject) => {
+        var snapshot = db.collection('scores').get();
+        if (snapshot) {
+            resolve(snapshot);
+        } else {
+            reject('Failed promise')
+        }
+    });
+    promise.then((snap) => {
+        let counter = 1;
+        snap.forEach((doc) => {
+            scores_array.push(doc.data()["score"]);
+            names_array.push(doc.data()["nick_name"]);
+            if(counter <= 4){
+    
+                $(`#num_${counter}`).text(doc.data()['score']);
+                counter++;
+            }
+            
+        });
+        
+    }).catch((e) => {
+        console.log(e);
 
+    });
+    
+    searchMin(scores_array);   
+    
 
 });
 
@@ -40,6 +69,7 @@ $(document).ready(function () {
 const $board = $("#board");
 var TOTALMINES = 0;
 $('#btn_facil').click(() => {
+
     countTime = 0;
     intervalTime = setInterval(timeIt, 1000);
     TOTALROWS = 10;
@@ -69,7 +99,10 @@ $('#btn_medio').click(() => {
 $('#btn_dificil').click(() => {
     countTime = 0
     intervalTime = setInterval(timeIt, 1000);
-
+    selectSection(8);
+    $('#board').load(function () {
+        selectSection(2);
+    });
     TOTALROWS = 16;
     TOTALCOLS = 16;
     loadBoard(TOTALROWS, TOTALCOLS);
@@ -258,26 +291,25 @@ function addData() {
         nick_name: $('#nameScore').val(),
         score: countTime
     })
-    .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch(function(error) {
-        console.error("Error adding document: ", error);
-    });
-}
-
-function readData(){
-    db.collection('scores').get()
-        .then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                console.log(doc.data()["score"]);
-                
-                // scores_array.push(doc.data()["score"])
-                // nick_names.push(doc.data()["nick_name"])
-
-                
-            });
+        .then(function (docRef) {
+            console.log("Document written with ID: ", docRef.id);
         })
-    
+        .catch(function (error) {
+            console.error("Error adding document: ", error);
+        });
 }
+
+function searchMin(array) {
+    let top;
+    for (let i = 0; i < 4; i++) {
+        top = 0;
+        for (let j = 0; j < array.length; j++) {
+            top = array[i] < array[j] ? top = array[i] : top = array[j];
+            console.log(top);
+            
+        }
+        top_scores.push(top);
+    }
+}
+
 

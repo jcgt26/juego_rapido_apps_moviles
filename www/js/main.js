@@ -19,9 +19,12 @@ $(document).ready(function () {
         secciones[i] = (document.getElementById('section_' + i + ''));
     }
     setTimeout(() => {
-        selectSection(5);
+        $('#preloader').addClass('ocultar');
+        selectSection(1);
+        
 
     }, 2000);
+  
 
     firebaseConfig = {
         apiKey: "AIzaSyDOP1idU_zKXBL3DphxZyx7sAVgH_NUBeU",
@@ -69,21 +72,30 @@ $(document).ready(function () {
 const $board = $("#board");
 var TOTALMINES = 0;
 $('#btn_facil').click(() => {
+    selectSection(8);
+    setTimeout(() => {
+        
+        countTime = 0;
+        intervalTime = setInterval(timeIt, 1000);
+        TOTALROWS = 10;
+        TOTALCOLS = 10;
+        loadBoard(TOTALROWS, TOTALCOLS);
+        selectSection(2);
 
-    countTime = 0;
-    intervalTime = setInterval(timeIt, 1000);
-    TOTALROWS = 10;
-    TOTALCOLS = 10;
-    loadBoard(TOTALROWS, TOTALCOLS);
+    }, 2000);
+
+
 
 
 
 });
 
 $('#btn_medio').click(() => {
+    selectSection(8);
+    setTimeout(() => {
+        
     countTime = 0;
     intervalTime = setInterval(timeIt, 1000);
-
     TOTALROWS = 13;
     TOTALCOLS = 13;
     loadBoard(TOTALROWS, TOTALCOLS);
@@ -92,6 +104,9 @@ $('#btn_medio').click(() => {
         $('.column').css({ "width": "22px", "height": "22px" });
         $('.column').css({ "transition": "all 0.5s" });
     });
+    selectSection(2);
+
+}, 2000);
 
 
 });

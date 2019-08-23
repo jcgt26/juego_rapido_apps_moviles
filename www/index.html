@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="">
 
 <head>
     <meta charset="UTF-8">
@@ -7,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/main.css">
     <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
-    <link rel="stylesheet" href="fontawesome-free-5.10.1-web/css/all.css">
-    <link rel="shortcut icon" href="img/flag.ico" />
+    <!-- <link rel="shortcut icon" href="img/flag.ico" /> -->
 
     <title>Salva Crush</title>
 </head>
@@ -77,10 +76,12 @@
         <span id="btn_registrar" onclick="selectSection(9); "></span>
     </section>
 
-    <section class="section_8" id="section_8">
+    <section class="section_8 ocultar" id="section_8">
         <!-- <span id="img_main"></span> -->
         <span id="loading"></span>
     </section>
+
+    <dvi  id= "preloader" class="preloader"></dvi>
 
     <section class="section_9 ocultar" id="section_9">
             <span id="img_game_nick"></span>
@@ -109,6 +110,10 @@
      https://firebase.google.com/docs/web/setup#config-web-app -->
 
     <script>
+
+        $(window).on('load', ()=> {
+            $('.preloader').addClass('complete');
+        })
     </script>
 
 </body>
