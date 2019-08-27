@@ -15,7 +15,7 @@ var score;
 var db;
 var promise;
 $(document).ready(function () {
-    for (let i = 1; i <= 9; i++) {
+    for (let i = 1; i <= 10; i++) {
         secciones[i] = (document.getElementById('section_' + i + ''));
     }
     setTimeout(() => {
@@ -112,12 +112,12 @@ $('#btn_medio').click(() => {
 });
 
 $('#btn_dificil').click(() => {
+    selectSection(8);
+    setTimeout(() => {
     countTime = 0
     intervalTime = setInterval(timeIt, 1000);
     selectSection(8);
-    $('#board').load(function () {
-        selectSection(2);
-    });
+
     TOTALROWS = 16;
     TOTALCOLS = 16;
     loadBoard(TOTALROWS, TOTALCOLS);
@@ -126,7 +126,9 @@ $('#btn_dificil').click(() => {
         $('.column').css({ "width": "18px", "height": "18px" });
         $('.column').css({ "transition": "all 0.5s" });
     });
+    selectSection(2);
 
+}, 2000);
 });
 
 function timeIt() {

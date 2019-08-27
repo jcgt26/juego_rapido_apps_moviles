@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/main.css">
     <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
-    <!-- <link rel="shortcut icon" href="img/flag.ico" /> -->
 
     <title>Salva Crush</title>
 </head>
@@ -20,6 +19,7 @@
         <span id="btn_jugar" onclick="selectSection(3)"></span>
         <span id="btn_score" onclick="selectSection(5);"></span>
         <span id="btn_tutorial" onclick="selectSection(4)"></span>
+        <span id="btn_credits" onclick="selectSection(10)"></span>
 
     </section>
     <!-- Game section -->
@@ -36,9 +36,9 @@
     <section class="section_3 ocultar" id="section_3">
         <span class="back_difficulty" onclick="selectSection(1);"></span>
         <span id="header_difficulty"></span>
-        <span id="btn_facil" onclick="selectSection(2)"></span>
-        <span id="btn_medio" onclick="selectSection(2)"></span>
-        <span id="btn_dificil" onclick="selectSection(2)"></span>
+        <span id="btn_facil" ></span>
+        <span id="btn_medio" ></span>
+        <span id="btn_dificil" ></span>
     </section>
 
     <!-- Section Tutorial -->
@@ -91,6 +91,15 @@
         <span id="btn_tryAgain_nick" onclick="selectSection(3);"></span>
 
     </section>
+
+    <section class="section_10 ocultar" id="section_10">
+            <span class="back_difficulty" onclick="selectSection(1); "></span>
+        <span id="img_creditos"></span>
+    
+   
+   
+
+</section>
 
 
     <!-- recordar importar jquery antes que todos los scripts -->
